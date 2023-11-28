@@ -1,0 +1,34 @@
+<div class="d-flex">
+<div *ngIf="buttonDisplay" class="play-button" (click)="randomMovieGenerator()">
+  <svg class="play-icon" viewBox="0 0 64 64">
+    <path d="M22 50V14l30 18z"/>
+  </svg>
+  <span class="button-text">Random Movie</span>
+  
+</div>
+
+  <div class="loading-container" *ngIf="loadingMovie">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
+
+<ng-container *ngIf="cardDisplay">
+  <div *ngIf="randomMovie$ | async as data" class="movie-card">
+  <span class="close-icon">
+    ❌
+  </span>
+    <div class="card-header">
+      <h1>{{data.original_title}}</h1>
+      <div class="img-container">
+        <img alt="Movie Poster" [src]="'https://image.tmdb.org/t/p/w300' + data.poster_path" />
+      </div>
+      <div class="overview">{{ data.overview }}</div>
+    </div>
+    <div class="card-footer">
+      <button class="second-generator-button" (click)="randomMovieGenerator()">Again▶️</button>
+      <button class="trailer-button">Watch trailer▶️</button>
+      <div class="imdb-rating">IMDB: {{ data.vote_average | number:'1.1-1' }}</div>
+    </div>
+
+  </div>
+</ng-container>
