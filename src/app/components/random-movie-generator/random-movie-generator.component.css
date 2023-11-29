@@ -103,55 +103,11 @@ h1 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-/* CSS for the Play Button */
-.play-button {
-  width: 210px;
-  height: 60px;
-  border-radius: 30px;
-  background-color: #e50914;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.play-button:hover {
-  transform: scale(1.05);
-  background-color: #ff0a16;
-}
 
-.play-icon {
-  width: 40px;
-  height: 40px;
-  fill: #fff;
-  margin-right: 10px;
-}
 
-.button-text {
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-}
 
-/* Ripple effect */
-.play-button::before {
-  content: '';
-  position: absolute;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  transform: scale(0);
-  transition: transform 0.4s ease-out;
-  pointer-events: none;
-}
 
-.play-button:hover::before {
-  transform: scale(2.5);
-}
 
 
 /* CSS for the loading animation */

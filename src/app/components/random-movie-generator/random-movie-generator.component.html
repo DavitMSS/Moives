@@ -1,13 +1,7 @@
 <div class="d-flex">
 
-  <!-- button გავიტანო კომპონენტად -->
-<div *ngIf="buttonDisplay" class="play-button" (click)="randomMovieGenerator()">
-  <svg class="play-icon" viewBox="0 0 64 64">
-    <path d="M22 50V14l30 18z"/>
-  </svg>
-  <span class="button-text">Random Movie</span>
-  
-</div>
+
+<app-random-moive-btn *ngIf="buttonDisplay" (click)="randomMovieGenerator()"></app-random-moive-btn>
 <!-- 
   <div class="loading-container" *ngIf="loadingMovie">
     <p-progressSpinner></p-progressSpinner>
