@@ -20,7 +20,10 @@ export class MoviesService {
   }
 
   getMoiveDetail(movieId:number):Observable<MovieDetails>{
-    return this._http.get<MovieDetails>(`${environment.baseUrl}/movie/${movieId}?api_key=${environment.apiKey}&append_to_response=videos`)
+    return this._http.get<MovieDetails>(`${environment.baseUrl}/movie/${movieId}?api_key=${environment.apiKey}`)
+  }
+  getMoiveTrailer(movieId:number):Observable<any>{
+    return this._http.get<any>(`${environment.baseUrl}/movie/${movieId}/videos?api_key=${environment.apiKey}`)
   }
 
 

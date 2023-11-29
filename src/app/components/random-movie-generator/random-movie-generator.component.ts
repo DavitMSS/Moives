@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Movie, MovieDetails } from 'src/app/interfaces/movies';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -12,8 +12,11 @@ export class RandomMovieGeneratorComponent implements OnInit {
 
   constructor(public MoviesService:MoviesService) { }
 
-  public movies! : Movie[]
-  randomMovie$! :Observable<MovieDetails>
+  public movies! : Movie[];
+  public movieId : any;
+  randomMovie$! : Observable<MovieDetails>;
+  moiveTrailer! : any;
+
   overwiev: boolean = false;
   loadingMovie: boolean = false;
   buttonDisplay: boolean = true;
@@ -38,16 +41,29 @@ export class RandomMovieGeneratorComponent implements OnInit {
   randomMovieGenerator() {
     const randomNumber = Math.floor(Math.random() * 19);
     const movieId = this.movies[randomNumber].id;
-
+    this.movieId = movieId;
       this.buttonDisplay = false;
       this.loadingMovie = true;
       this.cardDisplay = false
 
-    setTimeout(() => {
       this.randomMovie$ = this.MoviesService.getMoiveDetail(movieId);
       this.loadingMovie = false;
       this.cardDisplay = true;
-    }, 1000);
+    
+  } 
+
+  watchTrailer() {
+    this.MoviesService.getMoiveTrailer(this.movieId).subscribe(
+      (data => {
+        data.results.forEach((element : any) => {
+          if(element.type == "Trailer"){
+            console.log(element.key,'element Key')
+            this.moiveTrailer = element.key
+          }
+        });
+        // window.open(`https://www.youtube.com/watch?v=${this.moiveTrailer}`, '_blank');
+      }) 
+    )
   }
 
 }

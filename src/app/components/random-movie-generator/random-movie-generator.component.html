@@ -1,4 +1,6 @@
 <div class="d-flex">
+
+  <!-- button გავიტანო კომპონენტად -->
 <div *ngIf="buttonDisplay" class="play-button" (click)="randomMovieGenerator()">
   <svg class="play-icon" viewBox="0 0 64 64">
     <path d="M22 50V14l30 18z"/>
@@ -6,13 +8,14 @@
   <span class="button-text">Random Movie</span>
   
 </div>
-
+<!-- 
   <div class="loading-container" *ngIf="loadingMovie">
     <p-progressSpinner></p-progressSpinner>
-  </div>
+  </div> -->
 </div>
 
 <ng-container *ngIf="cardDisplay">
+
   <div *ngIf="randomMovie$ | async as data" class="movie-card">
   <span class="close-icon">
     ❌
@@ -26,9 +29,36 @@
     </div>
     <div class="card-footer">
       <button class="second-generator-button" (click)="randomMovieGenerator()">Again▶️</button>
-      <button class="trailer-button">Watch trailer▶️</button>
+      <button class="trailer-button" (click)="watchTrailer()">Watch trailer▶️</button>
+      
+      <!-- <iframe width="560" height="315" [src]="'https://www.youtube.com/embed/BglW4ogv6ds?si=' + '80yfa3P3Y3KKgdVi' | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
       <div class="imdb-rating">IMDB: {{ data.vote_average | number:'1.1-1' }}</div>
     </div>
+  </div>
 
+</ng-container>
+
+  <app-trailer  *ngIf="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>
+
+<!-- სკელეტონი გავიტანო კომპონენტად -->
+<ng-container *ngIf="loadingMovie">
+  <div class="movie-card skeleton">
+   
+    <div class="card-header">
+      <h1 class="skeleton">
+        <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+      </h1>
+      <div class="img-container">
+        <p-skeleton width="100%" height="250px"></p-skeleton>
+      </div>
+      <div class="overview skeleton">
+        <p-skeleton width="100%" height="100px"></p-skeleton>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p-skeleton width="4rem" height="2rem"></p-skeleton>
+      <p-skeleton width="4rem" height="2rem"></p-skeleton>
+      <p-skeleton width="4rem" height="2rem"></p-skeleton>
+    </div>
   </div>
 </ng-container>

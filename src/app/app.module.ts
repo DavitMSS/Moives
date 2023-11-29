@@ -15,12 +15,18 @@ import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
 
+import { SkeletonModule } from 'primeng/skeleton';
+import { TrailerComponent } from './components/trailer/trailer.component';
+import { SafePipe } from './pipes/safe.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RandomMovieGeneratorComponent,
     MoviesListComponent,
+    TrailerComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,7 @@ import { MoviesListComponent } from './components/movies/movies-list/movies-list
     GalleriaModule,
     ButtonModule,
     ProgressSpinnerModule,
+    SkeletonModule,
     CardModule,
     ShallModule,
     HttpClientModule
