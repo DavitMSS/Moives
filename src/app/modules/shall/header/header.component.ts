@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit {
     this.headerItems = [
       {
         label:"Home",
-        routerLink: "home"
+        routerLink: "/home"
       },
       {
         label:"TV Shows",
-        routerLink: "tvshows"
+        routerLink: "/tvshows"
       },
       {
         label:"Movies",

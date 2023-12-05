@@ -1,0 +1,4 @@
+<div class="card-container">
+    <app-card  *ngFor="let movie of moviesList" [data]="movie"></app-card>
+</div>
+<p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>

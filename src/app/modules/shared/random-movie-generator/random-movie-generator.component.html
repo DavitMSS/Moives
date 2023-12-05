@@ -8,9 +8,10 @@
   </div> -->
 </div>
 
-<ng-container *ngIf="cardDisplay">
+<!-- <ng-container *ngIf="cardDisplay">  -->
 
   <div *ngIf="randomMovie$ | async as data" class="movie-card">
+    
   <span class="close-icon">
     ❌
   </span>
@@ -25,12 +26,11 @@
       <button class="second-generator-button" (click)="randomMovieGenerator()">Again▶️</button>
       <button class="trailer-button" (click)="watchTrailer()">Watch trailer▶️</button>
       
-      <!-- <iframe width="560" height="315" [src]="'https://www.youtube.com/embed/BglW4ogv6ds?si=' + '80yfa3P3Y3KKgdVi' | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
       <div class="imdb-rating">IMDB: {{ data.vote_average | number:'1.1-1' }}</div>
     </div>
   </div>
 
-</ng-container>
+<!-- </ng-container> -->
 
   <app-trailer  *ngIf="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>
 

@@ -15,16 +15,29 @@ export class MoviesService {
     ) { }
 
 
+
+
+  getMovieListByPage(page:number) :Observable<any>{
+    return this._http.get<any>(`${environment.baseUrl}/discover/movie?api_key=${environment.apiKey}&page=${page}`)
+  }
+
+
   getMovies():Observable<MovieResponse>{
     return this._http.get<MovieResponse>(`${environment.baseUrl}/discover/movie?api_key=${environment.apiKey}`)
   }
 
+
   getMoiveDetail(movieId:number):Observable<MovieDetails>{
     return this._http.get<MovieDetails>(`${environment.baseUrl}/movie/${movieId}?api_key=${environment.apiKey}`)
   }
+    //// INTERFACES
+
   getMoiveTrailer(movieId:number):Observable<any>{
     return this._http.get<any>(`${environment.baseUrl}/movie/${movieId}/videos?api_key=${environment.apiKey}`)
   }
-
+//TVshows
+getTvShowsByPage(page:number) :Observable<any>{
+  return this._http.get<any>(`${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}`)
+}
 
 }
