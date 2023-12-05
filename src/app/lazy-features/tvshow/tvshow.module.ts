@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { TVshowRoutingModule } from './tvshow-routing.module';
 import { TvshowPageComponent } from './tvshow-page/tvshow-page.component';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { PaginatorModule } from 'primeng/paginator';
+import { TvshowService } from './tvshow.service';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
   imports: [
     CommonModule,
     TVshowRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    PaginatorModule
+  ],
+  providers: [TvshowService]
 })
 export class TVshowModule { }

@@ -10,6 +10,7 @@ import { RandomMovieGeneratorComponent } from './random-movie-generator/random-m
 import { TrailerComponent } from './trailer/trailer.component';
 import { CardComponent } from './card/card.component';
 import {PaginatorModule} from 'primeng/paginator';
+import { MovieService } from 'src/app/lazy-features/moives/movies.service';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import {PaginatorModule} from 'primeng/paginator';
     CardComponent,
 
     SafePipe
-  ]
+  ],
+  providers: [MovieService]
 })
 export class SharedModule { }

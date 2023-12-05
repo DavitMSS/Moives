@@ -20,6 +20,6 @@ import { MovieService } from './movies.service';
 
   ],
   exports:[MoviesPageComponent],
-  providers: [MovieService]
+  // providers: [MovieService]
 })
 export class MoivesModule { }

@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, catchError, map, switchMap, tap } from 'rxjs';
 import { Movie, MovieDetails } from 'src/app/interfaces/movies';
-import { MoviesService } from 'src/app/services/movies.service';
+import { MovieService } from 'src/app/lazy-features/moives/movies.service';
 
 @Component({
   selector: 'app-random-movie-generator',
@@ -10,7 +10,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class RandomMovieGeneratorComponent implements OnInit {
 
-  constructor(public moviesService:MoviesService) { }
+  constructor(public movieService:MovieService) { }
 
   public movies! : Movie[];
   public movieId! : number;
@@ -23,7 +23,7 @@ export class RandomMovieGeneratorComponent implements OnInit {
   cardDisplay: boolean = false;
 
   ngOnInit(): void {
-  //  this.getMovieRandomPage()
+
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -33,26 +33,11 @@ export class RandomMovieGeneratorComponent implements OnInit {
     }
   }
 
-  // getMovieRandomPage(){
-  //   const randomPage = Math.floor(Math.random() * 499);
-    
-  //   this.MoviesService.getMovieListByPage(randomPage).subscribe(
-  //     (res) => {
-  //       console.log(res,'res')
-  //       this.movies = res.results
-  //     }
-  //   )
-  // }
-
-
   randomMovieGenerator(): void {
     const randomPage: number = Math.floor(Math.random() * 499);
-    console.log(randomPage, 'click');
     this.loadingMovie = true;
-    // this.moviesService.getMovieListByPage(randomPage).subscribe()
-    this.randomMovie$ = this.moviesService.getMovieListByPage(randomPage).pipe(
+    this.randomMovie$ = this.movieService.getMovieListByPage(randomPage).pipe(
       switchMap((res) => {
-        console.log(res);
         this.movies = res.results;
 
         const randomNumber: number = Math.floor(Math.random() * 19);
@@ -63,15 +48,14 @@ export class RandomMovieGeneratorComponent implements OnInit {
         this.loadingMovie = false;//skeleton none
         this.cardDisplay = true;
 
-        return this.moviesService.getMoiveDetail(this.movieId)
+        return this.movieService.getMoiveDetail(this.movieId)
       }),
     )
   }
 
 
-
   watchTrailer() {
-    this.moviesService.getMoiveTrailer(this.movieId).subscribe(
+    this.movieService.getMoiveTrailer(this.movieId).subscribe(
       (data => {
         data.results.forEach((element : any) => {
           if(element.type == "Trailer"){
@@ -79,7 +63,6 @@ export class RandomMovieGeneratorComponent implements OnInit {
             this.moiveTrailer = element.key
           }
         });
-        // window.open(`https://www.youtube.com/watch?v=${this.moiveTrailer}`, '_blank');
       }) 
     )
   }

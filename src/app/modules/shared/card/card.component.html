@@ -1,5 +1,5 @@
 <div *ngIf="data" class="card">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.name }}" class="poster" />
+    <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.name }}" class="poster" loading="lazy"/>
     <div class="details">
         <h3 class="title">{{ data.name }}</h3>
         <p class="overview">{{ data.overview }}</p>
