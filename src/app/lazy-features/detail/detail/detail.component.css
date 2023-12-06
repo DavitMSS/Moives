@@ -1,0 +1,95 @@
+/* Background linear gradient */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Movie details container */
+  .data-detail {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #000000, #625e5e); 
+    color: #fff;
+    border-radius: 10px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+  }
+  
+  /* Poster image */
+  .poster img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Poster hover effect */
+  .poster img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Details section */
+  .details {
+    margin-left: 20px;
+    text-align: left;
+  }
+  
+  /* Movie title */
+  h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Tagline */
+  .tagline {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Movie information */
+  .info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .info strong {
+    font-weight: bold;
+  }
+  
+  .info span {
+    margin-right: 8px;
+  }
+  
+  /* Links */
+  .info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .info a:hover {
+    text-decoration: underline;
+  }
+  
+  /* IMDB */
+  .vote-average {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #ffd700; 
+    color: #000;
+    font-weight: bold;
+  }
+  
