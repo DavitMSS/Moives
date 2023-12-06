@@ -1,7 +1,10 @@
+<ng-container *ngIf="data">
 <div class="data-detail">
     <div class="poster">
-        <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.title }}" class="poster" loading="lazy"/>
+        <button class="trailer-button" (click)="watchTrailer()">Watch trailer▶️</button>
+        <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.title }}"  loading="lazy"/>
     </div>
+
     <div class="details">
       <h1>{{ data.title }}</h1>
       <p class="tagline">{{ data.tagline }}</p>
@@ -12,7 +15,6 @@
           <span *ngFor="let genre of data.genres">{{ genre.name }}</span>
         </p>
         <p><strong>Overview:</strong> {{ data.overview }}</p>
-        <p class="vote_average"><strong class="vote_average">Vote Average:</strong> {{ data.vote_average }}</p>
         <p><strong>Production Companies:</strong>
           <span *ngFor="let company of data.production_companies">{{ company.name }}</span>
         </p>
@@ -20,9 +22,9 @@
           <span *ngFor="let country of data.production_countries">{{ country.name }}</span>
         </p>
         <p><strong>Original Language:</strong> {{ data.original_language }}</p>
-        <!-- <p><strong>IMDb Link:</strong> <a href="https://www.imdb.com/title/{{ data.imdb_id }}" target="_blank">{{ data.imdb_id }}</a></p> -->
-        <!-- <p><strong>Homepage:</strong> <a href="{{ data.homepage }}" target="_blank">{{ data.homepage }}</a></p> -->
+        <p class="vote_average"><strong>IMDB:</strong> {{ data.vote_average | number:'1.1-1'}}</p>
       </div>
     </div>
   </div>
-  
+</ng-container>
+<app-trailer  *ngIf="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>

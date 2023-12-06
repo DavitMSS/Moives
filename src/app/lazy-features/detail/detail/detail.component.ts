@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../moives/movies.service';
 
@@ -8,7 +8,10 @@ import { MovieService } from '../../moives/movies.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  @Input() moiveTrailer!:any;
   public data! : any;
+  public Id! : number;
+
   constructor(
     private route : ActivatedRoute,
     private MovieService: MovieService
@@ -19,13 +22,24 @@ export class DetailComponent implements OnInit {
   }
 
   getDetails(){
-    let id! : number;
     this.route.params.subscribe((params => {
-      id = +params['id']
+      this.Id = +params['id']
     }))
-    this.MovieService.getMoiveDetail(id).subscribe(data => {
+    this.MovieService.getMoiveDetail(this.Id).subscribe(data => {
       this.data = data
     })
   }
+  watchTrailer() {
+    this.MovieService.getMoiveTrailer(this.Id).subscribe(
+      (data => {
+        data.results.forEach((element : any) => {
+          if(element.type == "Trailer"){
+            this.moiveTrailer = element.key
+          }
+        });
+      }) 
+    )
+  }
+
 
 }

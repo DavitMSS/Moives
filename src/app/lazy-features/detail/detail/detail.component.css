@@ -1,13 +1,24 @@
-/* Background linear gradient */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+
   
+.poster {
+    position: relative;
+    display: inline-block;
+}
+
+.trailer-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1.3s ease-in-out 1s;
+}
+
+.poster:hover .trailer-button {
+    opacity: 1;
+}
+
   /* Movie details container */
   .data-detail {
     max-width: 1300px;
@@ -84,12 +95,19 @@ body {
   }
   
   /* IMDB */
-  .vote-average {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #ffd700; 
-    color: #000;
-    font-weight: bold;
+  .vote_average {
+    border-radius: 8px;
+    padding: 5px;
+    display: inline;
+    background-color: #ffde5b;
+    color: black;
   }
-  
+  .trailer-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
