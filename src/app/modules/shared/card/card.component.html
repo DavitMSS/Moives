@@ -1,10 +1,17 @@
 <div *ngIf="data" class="card">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.name }}" class="poster" loading="lazy"/>
+    <div *ngIf="!!data.poster_path; else defaultPhoto">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.name }}" class="poster" loading="lazy"/>
+    </div>
+    <ng-template #defaultPhoto>
+        <img [src]="'https://via.placeholder.com/250x375'" alt="defaultPhoto" class="poster" loading="lazy"/>
+    </ng-template>
+
     <div class="details">
+        <a style="color: #fff;" routerLink="{{data.id}}">see details</a>
         <h3 class="title">{{ data.name }}</h3>
         <p class="overview">{{ data.overview }}</p>
         <p class="rating">Rating: {{ data.vote_average }}/10</p>
         <p class="release">First Air Date: {{ data.first_air_date }}</p>
     </div>
 </div>
-  
+ <!-- // module// -->

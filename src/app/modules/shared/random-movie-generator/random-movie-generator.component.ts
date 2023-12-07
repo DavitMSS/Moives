@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, catchError, map, switchMap, tap } from 'rxjs';
-import { Movie, MovieDetails } from 'src/app/interfaces/movies';
+import { MovieDetails, Movie_Show } from 'src/app/interfaces/movies';
 import { MovieService } from 'src/app/lazy-features/moives/movies.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class RandomMovieGeneratorComponent implements OnInit {
 
   constructor(public movieService:MovieService) { }
 
-  public movies! : Movie[];
+  public movies! : Movie_Show[];
   public movieId! : number;
   randomMovie$! : Observable<MovieDetails>;
   moiveTrailer! : any;
@@ -26,12 +26,12 @@ export class RandomMovieGeneratorComponent implements OnInit {
 
   }
 
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.code === 'Space') {
-      this.randomMovieGenerator()
-    }
-  }
+  // @HostListener('document:keydown', ['$event'])
+  // handleKeyboardEvent(event: KeyboardEvent) {
+  //   if (event.code === 'Space') {
+  //     this.randomMovieGenerator()
+  //   }
+  // }
 
   randomMovieGenerator(): void {
     const randomPage: number = Math.floor(Math.random() * 499);
@@ -59,7 +59,6 @@ export class RandomMovieGeneratorComponent implements OnInit {
       (data => {
         data.results.forEach((element : any) => {
           if(element.type == "Trailer"){
-            console.log(element.key,'element Key')
             this.moiveTrailer = element.key
           }
         });

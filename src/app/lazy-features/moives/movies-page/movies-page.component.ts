@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { MovieService } from '../movies.service';
-import { Movie } from 'src/app/interfaces/movies';
+import { Movie_Show } from 'src/app/interfaces/movies';
 
 @Component({
   selector: 'app-movies-page',
@@ -14,7 +14,7 @@ export class MoviesPageComponent implements OnInit {
   public totalRecords!:number;
 
   page : number = 1
-  public moviesList!: Movie[]
+  public moviesList!: Movie_Show[]
 
   constructor(private movieService: MovieService) {
    }

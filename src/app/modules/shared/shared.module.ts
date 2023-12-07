@@ -9,8 +9,19 @@ import { RandomMoiveBtnComponent } from './random-moive-btn/random-moive-btn.com
 import { RandomMovieGeneratorComponent } from './random-movie-generator/random-movie-generator.component';
 import { TrailerComponent } from './trailer/trailer.component';
 import { CardComponent } from './card/card.component';
-import {PaginatorModule} from 'primeng/paginator';
 import { MovieService } from 'src/app/lazy-features/moives/movies.service';
+import { Routes, RouterModule } from '@angular/router';
+
+
+export const routes: Routes = [
+  
+  { path: 'tvshows/:id', loadChildren: () => import('../../lazy-features/detail/detail.module').then(m => m.DetailModule) },
+  { path: 'movies/:id', loadChildren: () => import('../../lazy-features/detail/detail.module').then(m => m.DetailModule) },
+
+];
+
+
+
 
 @NgModule({
     declarations: [
@@ -24,6 +35,7 @@ import { MovieService } from 'src/app/lazy-features/moives/movies.service';
   imports: [
     CommonModule,
     SkeletonModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     RandomMovieGeneratorComponent,

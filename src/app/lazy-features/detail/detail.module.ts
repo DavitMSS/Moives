@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail/detail.component';
 import { MovieService } from '../moives/movies.service';
-import { TrailerComponent } from 'src/app/modules/shared/trailer/trailer.component';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
-
-
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
     DetailComponent,
@@ -15,7 +13,8 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
   imports: [
     CommonModule,
     DetailRoutingModule,
-    SharedModule
+    SharedModule,
+    CarouselModule
   ],
   providers : [MovieService]
 })

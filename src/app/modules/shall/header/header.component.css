@@ -1,4 +1,3 @@
-/* Example CSS styles for the futuristic menu */
 .menubar {
     display: flex;
     justify-content: space-between;
@@ -8,18 +7,11 @@
     font-family: 'Arial', sans-serif;
 }
 
-.start-template {
-    /* Styles for the start template */
-}
 
 .logo {
     width: 150px;
-    
 }
 
-.end-template {
-    /* Styles for the end template */
-}
 
 .menu-list {
     list-style: none;
@@ -99,3 +91,20 @@
 .search-button:hover {
     background-color: #ff0a16;
 }
+
+.card-container {
+    max-width: 1300px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    overflow-y: scroll;
+    background-color: #0a0a0a96;
+    padding-top: 40px;
+  }
+  
+  
+  

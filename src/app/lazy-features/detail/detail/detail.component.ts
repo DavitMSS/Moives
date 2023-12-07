@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../moives/movies.service';
+import { Observable, switchMap } from 'rxjs';
+import { CastMember } from 'src/app/interfaces/movies';
 
 @Component({
   selector: 'app-detail',
@@ -9,8 +11,9 @@ import { MovieService } from '../../moives/movies.service';
 })
 export class DetailComponent implements OnInit {
   @Input() moiveTrailer!:any;
-  public data! : any;
-  public Id! : number;
+  public data$! : Observable<any>;
+  public cast$! : Observable<any>
+  public id : number = +this.route.snapshot.params['id'];
 
   constructor(
     private route : ActivatedRoute,
@@ -19,18 +22,16 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDetails()
+    this.getCast()
   }
 
   getDetails(){
-    this.route.params.subscribe((params => {
-      this.Id = +params['id']
-    }))
-    this.MovieService.getMoiveDetail(this.Id).subscribe(data => {
-      this.data = data
-    })
+      this.data$ = this.MovieService.getMoiveDetail(this.id)
   }
+
+
   watchTrailer() {
-    this.MovieService.getMoiveTrailer(this.Id).subscribe(
+    this.MovieService.getMoiveTrailer(this.id).subscribe(
       (data => {
         data.results.forEach((element : any) => {
           if(element.type == "Trailer"){
@@ -41,5 +42,8 @@ export class DetailComponent implements OnInit {
     )
   }
 
+  getCast(){
+    this.cast$ = this.MovieService.getCast(this.id)
+  }
 
 }

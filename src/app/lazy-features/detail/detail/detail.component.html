@@ -1,30 +1,128 @@
-<ng-container *ngIf="data">
-<div class="data-detail">
-    <div class="poster">
-        <button class="trailer-button" (click)="watchTrailer()">Watch trailer▶️</button>
-        <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.title }}"  loading="lazy"/>
-    </div>
+<div style="display: flex; justify-content: space-around;">
+  <ng-container *ngIf="data$ | async as data">
+  <div class="data-detail">
+      <div class="poster">
+          <button class="trailer-button" (click)="watchTrailer()">Watch trailer▶️</button>
+          <img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.title }}"  loading="lazy"/>
+          <!-- {{}} -->
+      </div>
 
-    <div class="details">
-      <h1>{{ data.title }}</h1>
-      <p class="tagline">{{ data.tagline }}</p>
-      <div class="info">
-        <p><strong>Release Date:</strong> {{ data.release_date }}</p>
-        <p><strong>Runtime:</strong> {{ data.runtime }} mins</p>
-        <p><strong>Genres: </strong>
-          <span *ngFor="let genre of data.genres">{{ genre.name }}</span>
-        </p>
-        <p><strong>Overview:</strong> {{ data.overview }}</p>
-        <p><strong>Production Companies:</strong>
-          <span *ngFor="let company of data.production_companies">{{ company.name }}</span>
-        </p>
-        <p><strong>Production Countries:</strong>
-          <span *ngFor="let country of data.production_countries">{{ country.name }}</span>
-        </p>
-        <p><strong>Original Language:</strong> {{ data.original_language }}</p>
-        <p class="vote_average"><strong>IMDB:</strong> {{ data.vote_average | number:'1.1-1'}}</p>
+      <div class="details">
+        <h1>{{ data.title }}</h1>
+        <p class="tagline">{{ data.tagline }}</p>
+        <div class="info">
+          <p><strong>Release Date:</strong> {{ data.release_date }}</p>
+          <p><strong>Runtime:</strong> {{ data.runtime }} mins</p>
+          <p><strong>Genres: </strong>
+            <span *ngFor="let genre of data.genres">{{ genre.name }}</span>
+          </p>
+          <p><strong>Overview:</strong> {{ data.overview }}</p>
+          <p><strong>Production Companies:</strong>
+            <span *ngFor="let company of data.production_companies">{{ company.name }}</span>
+          </p>
+          <p><strong>Production Countries:</strong>
+            <span *ngFor="let country of data.production_countries">{{ country.name }}</span>
+          </p>
+          <p><strong>Original Language:</strong> {{ data.original_language }}</p>
+          <p class="vote_average"><strong>IMDB:</strong> {{ data.vote_average | number:'1.1-1'}}</p>
+        </div>
       </div>
     </div>
+  </ng-container>
+
+  <div *ngIf="cast$ | async as data">
+    <p-carousel
+      [value]="data.cast"
+      styleClass="custom-carousel"
+      orientation="vertical"
+      [numScroll]="2"
+      [numVisible]="2"
+      [circular]="true"
+      [autoplayInterval]="2000"
+      [showIndicators]="false"
+      verticalViewPortHeight="500px"
+      contentClass="content"
+    >
+      <ng-template pTemplate="header">
+        <h1 class="header-title">CAST</h1>
+      </ng-template>
+      <ng-template let-castMember pTemplate="item">
+        <div class="carousel-item p-d-flex p-flex-column p-align-center p-justify-center p-mb-3">
+          <div *ngIf="!!castMember.profile_path; else defaultPhoto">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path"
+              alt="{{ castMember.name }}"
+              class="actor-photo"
+              loading="lazy"
+            />
+          </div>
+          <ng-template #defaultPhoto>
+            <img
+              [src]="'https://via.placeholder.com/250x375'"
+              alt="defaultPhoto"
+              class="actor-photo"
+              loading="lazy"
+            />
+          </ng-template>
+          <div class="actor-details p-text-center">
+            <h4 class="actor-name p-mb-1">{{ castMember.name }}</h4>
+            <p class="actor-character p-mt-0 p-mb-3">{{ castMember.character }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
   </div>
-</ng-container>
+  
+
+</div>
+
+<!-- TRAILER -->
 <app-trailer  *ngIf="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>
+
+
+<!-- CAROUSEL -->
+<!-- <div *ngIf="cast$ | async as data">
+  <p-carousel [value]="data.cast" [numVisible]="3" [numScroll]="1">
+    <ng-template let-castMember pTemplate="item">
+      <div class="carousel-item">
+        <div *ngIf="!!castMember.profile_path; else defaultPhoto">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path" alt="{{ data.name }}" class="poster" loading="lazy"/>
+      </div>
+      <ng-template #defaultPhoto>
+          <img [src]="'https://via.placeholder.com/250x375'" alt="defaultPhoto" class="poster" loading="lazy"/>
+      </ng-template>
+        <div class="content">
+          <h4>{{ castMember.name }}</h4>
+          <p>{{ castMember.character }}</p>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div> -->
+
+<!-- <div *ngIf="cast$ | async as data">
+
+  <p-carousel [value]="data.cast"  orientation="vertical" [style]="{'max-width':'400px', 'margin-top':'2em'}" verticalViewPortHeight="352px"  [autoplayInterval]="3000">
+    <ng-template pTemplate="header">
+        <h1 style="color: red;">CAST</h1>
+    </ng-template>
+    <ng-template let-castMember pTemplate="item">
+        <div>
+            <div>
+                <div class="mb-3">
+                  <div *ngIf="!!castMember.profile_path; else defaultPhoto">
+                    <img [src]="'https://image.tmdb.org/t/p/w500' + castMember.profile_path" alt="{{ data.name }}"  loading="lazy"/>
+                </div>
+                <ng-template #defaultPhoto>
+                    <img [src]="'https://via.placeholder.com/250x375'" alt="defaultPhoto" loading="lazy"/>
+                </ng-template>
+                </div>
+                <div>
+                    <h4 class="mb-1">{{castMember.name}}</h4>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+</div> -->

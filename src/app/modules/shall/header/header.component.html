@@ -6,9 +6,10 @@
 
     <!-- Search bar for movies -->
     <div class="search-bar">
-        <input type="text" placeholder="Search for movies..." class="search-input" />
+        <input type="text" placeholder="Search for movies..." class="search-input" #Text [formControl]="searchText"/>
         <button class="search-button">Search</button>
     </div>
+   
 
 
     <nav class="end-template" *ngIf="headerItems">
@@ -21,3 +22,6 @@
         </ul>
     </nav>
 </header>
+<div *ngIf="!!Text.value && (searchResults$ | async) as data" class="card-container">
+    <app-card *ngFor="let result of data.results" [data]="result"></app-card>
+</div>

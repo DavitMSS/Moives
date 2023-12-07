@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, interval, of, switchMap, take } from 'rxjs';
-import { MovieDetails } from 'src/app/interfaces/movies';
+import { CastMember, MovieDetails } from 'src/app/interfaces/movies';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -24,14 +24,17 @@ export class MovieService {
     this.moviesSubject$.next(moviesData)
   }
 
-  getMoiveDetail(movieId:number):Observable<MovieDetails>{
-    return this._http.get<MovieDetails>(`${environment.baseUrl}/movie/${movieId}?api_key=${environment.apiKey}`)
+  getMoiveDetail(id:number):Observable<MovieDetails>{
+    return this._http.get<MovieDetails>(`${environment.baseUrl}/movie/${id}?api_key=${environment.apiKey}`)
   }
     //// INTERFACES
 
-  getMoiveTrailer(movieId:number):Observable<any>{
-    return this._http.get<any>(`${environment.baseUrl}/movie/${movieId}/videos?api_key=${environment.apiKey}`)
+  getMoiveTrailer(id:number):Observable<any>{
+    return this._http.get<any>(`${environment.baseUrl}/movie/${id}/videos?api_key=${environment.apiKey}`)
   }
 
+  getCast(id:number): Observable<any>{
+    return this._http.get<any>(`${environment.baseUrl}/movie/${id}/credits?api_key=${environment.apiKey}`)
+  }
 
 }

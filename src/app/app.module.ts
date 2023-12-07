@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
-import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { SharedModule } from './modules/shared/shared.module';
     ButtonModule,
     ProgressSpinnerModule,
     CardModule,
-    // SharedModule,
     ShallModule,
     HttpClientModule,
   ],

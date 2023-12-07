@@ -21,8 +21,8 @@
 
   /* Movie details container */
   .data-detail {
-    max-width: 1300px;
-    margin: 0 auto;
+    max-width: 800px;
+    /* margin: 0 auto; */
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -111,3 +111,33 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+  /* carousel */
+.custom-carousel {
+  border: 1px solid #ee0505;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.header-title {
+  color: red;
+  text-align: center;
+}
+
+.actor-photo {
+
+}
+
+.actor-details {
+  margin-top: 10px;
+}
+
+.actor-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.actor-character {
+  color: red;
+  margin-top: 5px;
+}

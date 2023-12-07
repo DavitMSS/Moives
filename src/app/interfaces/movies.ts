@@ -1,4 +1,11 @@
-export interface Movie {
+export interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path?: string; 
+}
+
+export interface Movie_Show {
     adult: boolean;
     backdrop_path: string | null;
     genre_ids: number[];
@@ -15,9 +22,9 @@ export interface Movie {
     vote_count: number;
   }
   
-  export interface MovieResponse {
+  export interface Movie_Show_Response {
     page: number;
-    results: Movie[];
+    results: Movie_Show[];
     total_pages: number;
     total_results: number;
   }
