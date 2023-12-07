@@ -7,3 +7,6 @@
   flex-wrap: wrap;
   gap: 50px;
 }
+:host ::ng-deep .p-paginator {
+  background: transparent !important;
+}
