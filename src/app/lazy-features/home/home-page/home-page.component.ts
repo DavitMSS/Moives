@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +12,7 @@ export class HomePageComponent implements OnInit {
   images : any[] = [];
 
   ngOnInit(): void {
+
     this.images = [
       { itemImageSrc: 'https://images2.alphacoders.com/724/724132.jpg' },
       { itemImageSrc: 'https://i.pinimg.com/originals/c0/99/9e/c0999e45d3a4a017a4097eb1eb893a72.jpg'},

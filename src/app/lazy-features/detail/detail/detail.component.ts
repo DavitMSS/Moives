@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
     this.getCast()
   }
 
+
   getDetails(){
       this.data$ = this.MovieService.getMoiveDetail(this.id)
   }

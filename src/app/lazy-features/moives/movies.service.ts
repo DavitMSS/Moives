@@ -12,7 +12,6 @@ export class MovieService {
   private moviesSubject$: BehaviorSubject<any> = new BehaviorSubject<any>([])
   public readonly moviesObservable$: Observable<any> = this.moviesSubject$.asObservable()
 
-
   constructor(private _http:HttpClient) { }
 
 

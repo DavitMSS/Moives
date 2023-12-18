@@ -8,7 +8,7 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
-    DetailComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
