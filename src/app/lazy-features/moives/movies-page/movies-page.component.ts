@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { MovieService } from '../movies.service';
 import { Movie_Show } from 'src/app/interfaces/movies';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies-page',
@@ -16,8 +17,10 @@ export class MoviesPageComponent implements OnInit {
   page : number = 1
   public moviesList!: Movie_Show[]
 
-  constructor(private movieService: MovieService) {
-   }
+  constructor(
+    private movieService: MovieService,
+    private route : ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
     this.movieService.moviesObservable$.subscribe((data) => {

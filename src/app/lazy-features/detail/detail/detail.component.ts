@@ -1,24 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit,  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../moives/movies.service';
-import { Observable, switchMap } from 'rxjs';
-import { CastMember } from 'src/app/interfaces/movies';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {
-  @Input() moiveTrailer!:any;
+export class DetailComponent implements OnInit{
+  public moiveTrailer!:any;
   public data$! : Observable<any>;
   public cast$! : Observable<any>
   public id : number = +this.route.snapshot.params['id'];
 
   constructor(
     private route : ActivatedRoute,
-    private MovieService: MovieService
+    private MovieService: MovieService,
     ) { }
+
 
   ngOnInit(): void {
     this.getDetails()
@@ -46,5 +46,8 @@ export class DetailComponent implements OnInit {
   getCast(){
     this.cast$ = this.MovieService.getCast(this.id)
   }
+
+
+
 
 }

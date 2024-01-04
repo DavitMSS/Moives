@@ -32,7 +32,7 @@
 
 <!-- </ng-container> -->
 
-  <app-trailer  *ngIf="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>
+  <app-trailer  *appTrailer="moiveTrailer" [trailerUrl]="moiveTrailer"></app-trailer>
 
 <!-- სკელეტონი გავიტანო კომპონენტად -->
 <ng-container *ngIf="loadingMovie">

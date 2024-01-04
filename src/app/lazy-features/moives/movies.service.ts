@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 export class MovieService {
   //add interfaces!!!
   private moviesSubject$: BehaviorSubject<any> = new BehaviorSubject<any>([])
+
+//asObservable() creates a read-only interface
+//on moviesObservable$ we can only subscribe now and not allowed to next new data.
   public readonly moviesObservable$: Observable<any> = this.moviesSubject$.asObservable()
 
   constructor(private _http:HttpClient) { }

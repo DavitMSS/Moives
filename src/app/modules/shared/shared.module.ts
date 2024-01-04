@@ -12,6 +12,7 @@ import { CardComponent } from './card/card.component';
 import { MovieService } from 'src/app/lazy-features/moives/movies.service';
 import { Routes, RouterModule } from '@angular/router';
 import { SetBackgroundDirective } from 'src/app/directives/set-background.directive';
+import { TrailerDirective } from 'src/app/directives/trailer.directive';
 
 
 export const routes: Routes = [
@@ -22,8 +23,6 @@ export const routes: Routes = [
 ];
 
 
-
-
 @NgModule({
     declarations: [
       RandomMovieGeneratorComponent,
@@ -31,7 +30,8 @@ export const routes: Routes = [
       TrailerComponent,
       CardComponent,
       SafePipe,
-      SetBackgroundDirective
+      SetBackgroundDirective,
+      TrailerDirective,
     ],
 
   imports: [
@@ -45,7 +45,8 @@ export const routes: Routes = [
     TrailerComponent,
     CardComponent,
     SetBackgroundDirective,
-    SafePipe
+    SafePipe,
+    TrailerDirective
   ],
   providers: [MovieService]
 })

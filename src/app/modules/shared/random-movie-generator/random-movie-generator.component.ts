@@ -1,12 +1,13 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Observable, catchError, map, switchMap, tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, switchMap } from 'rxjs';
+
 import { MovieDetails, Movie_Show } from 'src/app/interfaces/movies';
 import { MovieService } from 'src/app/lazy-features/moives/movies.service';
 
 @Component({
   selector: 'app-random-movie-generator',
   templateUrl: './random-movie-generator.component.html',
-  styleUrls: ['./random-movie-generator.component.css']
+  styleUrls: ['./random-movie-generator.component.css'],
 })
 export class RandomMovieGeneratorComponent implements OnInit {
 

@@ -6,6 +6,7 @@ export const routes: Routes = [
     path: "",
     loadChildren: () =>
       import('./lazy-features/home/home-module').then((mod) => mod.HomePageModule),
+      // pathMatch:'full'
   },
   {
     path: "home",
@@ -15,13 +16,27 @@ export const routes: Routes = [
   {
     path: "movies",
     loadChildren: () =>
-      import('./lazy-features/moives/movies.module').then((mod) => mod.MoivesModule),
+      import('./lazy-features/moives/movies.module').then((mod) => {
+        console.log(mod,'module')
+        return mod.MoivesModule
+      }),
   },
   {
     path: "tvshows",
     loadChildren: () =>
       import('./lazy-features/tvshow/tvshow.module').then((mod) => mod.TVshowModule),
   },
+  {
+    path:"404",
+    loadChildren: () => 
+    import("./modules/page-not-found/page-not-found.module").then((mod) => mod.PageNotFoundModule),
+    // outlet:'404'
+  },
+  {
+    path: '**',
+    redirectTo:'404',
+    pathMatch:'full'
+  }
 ];
 
 

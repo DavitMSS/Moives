@@ -24,7 +24,7 @@
             <span *ngFor="let country of data.production_countries">{{ country.name }}</span>
           </p>
           <p ><strong>Original Language:</strong> {{ data.original_language }}</p>
-          <p SetBackground class="vote_average"><strong>IMDB:</strong> {{ data.vote_average | number:'1.1-1'}}</p>
+          <p SetBackground [test]="'helo'" class="vote_average"><strong>IMDB:</strong> {{ data.vote_average | number:'1.1-1'}}</p>
         </div>
       </div>
     </div>
