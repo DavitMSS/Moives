@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 
 import { MovieDetails, Movie_Show } from 'src/app/interfaces/movies';
@@ -27,12 +27,12 @@ export class RandomMovieGeneratorComponent implements OnInit {
 
   }
 
-  // @HostListener('document:keydown', ['$event'])
-  // handleKeyboardEvent(event: KeyboardEvent) {
-  //   if (event.code === 'Space') {
-  //     this.randomMovieGenerator()
-  //   }
-  // }
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.code === 'Space') {
+      this.randomMovieGenerator()
+    }
+  }
 
   randomMovieGenerator(): void {
     const randomPage: number = Math.floor(Math.random() * 499);

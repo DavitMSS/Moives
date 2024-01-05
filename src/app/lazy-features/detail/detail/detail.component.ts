@@ -23,9 +23,10 @@ export class DetailComponent implements OnInit{
   ngOnInit(): void {
     this.getDetails()
     this.getCast()
+    
   }
 
-
+  
   getDetails(){
       this.data$ = this.MovieService.getMoiveDetail(this.id)
   }
