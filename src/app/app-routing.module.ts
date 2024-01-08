@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GeneralGuard } from './guards/general.guard';
+import { APIService } from './services/api.service';
 
 export const routes: Routes = [
   {
@@ -20,6 +22,7 @@ export const routes: Routes = [
         console.log(mod,'module')
         return mod.MoivesModule
       }),
+      canActivate:[GeneralGuard]
   },
   {
     path: "tvshows",

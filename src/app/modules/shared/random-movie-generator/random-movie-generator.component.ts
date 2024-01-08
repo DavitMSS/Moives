@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, HostBinding } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 
 import { MovieDetails, Movie_Show } from 'src/app/interfaces/movies';
@@ -33,6 +33,7 @@ export class RandomMovieGeneratorComponent implements OnInit {
       this.randomMovieGenerator()
     }
   }
+  // @HostBinding('style.backgroundColor') backgroundColor = 'blue';
 
   randomMovieGenerator(): void {
     const randomPage: number = Math.floor(Math.random() * 499);

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class DetailComponent implements OnInit{
   public moiveTrailer!:any;
-  public data$! : Observable<any>;
+  public data! : any;
   public cast$! : Observable<any>
   public id : number = +this.route.snapshot.params['id'];
 
@@ -21,16 +21,9 @@ export class DetailComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getDetails()
     this.getCast()
-    
+    this.data = this.route.snapshot.data['detail']
   }
-
-  
-  getDetails(){
-      this.data$ = this.MovieService.getMoiveDetail(this.id)
-  }
-
 
   watchTrailer() {
     this.MovieService.getMoiveTrailer(this.id).subscribe(

@@ -54,7 +54,8 @@ export class HeaderComponent implements OnInit {
      this.searchResults$ =  this.searchText.valueChanges.pipe(
       debounceTime(1000),
       switchMap((val) => {
-        return this.APIService.search(val);
+        // return this.APIService.search(val);
+        return val
       })
      )
   }
